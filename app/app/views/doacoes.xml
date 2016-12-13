@@ -1,12 +1,12 @@
 <Alloy>
 	<Tab id="doacoesTab">
 		<Window>
-			<TableView id="myTable" dataCollection="doacoes" >
+			<TableView onClick="showDetails" id="myTable" dataCollection="doacoes" >
 				<TableViewRow identificador="{alloy_id}" >
 					<View id="view">
-						<ImageView id="foto" image="{foto}" />
+						<ImageView id="image" image="{foto}" />
 						<View id="viewDados">
-							<Label id="descricao" text="{descricao}"/>
+							<Label id="descr" text="{descricao}"/>
 						</View>
 					</View>
 				</TableViewRow>

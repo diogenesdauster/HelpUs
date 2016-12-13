@@ -51,6 +51,11 @@ function Controller() {
         }
         $.__views.myTable.setData(rows);
     }
+    function showDetails(e) {
+        var doacao = Alloy.Collections.doacoes.get(e.rowData.identificador);
+        var ctrl = Alloy.createController("doacaoDetails", doacao);
+        $.doacoesTab.open(ctrl.getView());
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "doacoes";
     this.args = arguments[0] || {};
@@ -67,6 +72,7 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.__alloyId0 = Ti.UI.createWindow({
         id: "__alloyId0"
     });
@@ -76,6 +82,7 @@ function Controller() {
     $.__views.__alloyId0.add($.__views.myTable);
     var __alloyId8 = Alloy.Collections["doacoes"] || doacoes;
     __alloyId8.on("fetch destroy change add remove reset", __alloyId9);
+    showDetails ? $.addListener($.__views.myTable, "click", showDetails) : __defers["$.__views.myTable!click!showDetails"] = true;
     $.__views.doacoesTab = Ti.UI.createTab({
         title: "Doações",
         window: $.__views.__alloyId0,
@@ -87,6 +94,7 @@ function Controller() {
     };
     _.extend($, $.__views);
     $.args;
+    __defers["$.__views.myTable!click!showDetails"] && $.addListener($.__views.myTable, "click", showDetails);
     _.extend($, exports);
 }
 

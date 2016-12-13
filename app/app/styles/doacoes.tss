@@ -8,7 +8,7 @@
 	layout:"horizontal"	
 }
 
-"#foto":{
+"#image":{
 	height:96,
 	width:72,
 	left:5,

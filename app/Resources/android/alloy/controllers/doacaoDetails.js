@@ -8,7 +8,7 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
-    function showMap() {
+    function showMapDoacao() {
         var ctrl = Alloy.createController("map", doacao);
         ctrl.getView().open();
     }
@@ -29,31 +29,41 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.doacaoDetails = Ti.UI.createWindow({
-        id: "doacaoDetails"
+    $.__views.viewDados = Ti.UI.createWindow({
+        layout: "vertical",
+        id: "viewDados"
     });
-    $.__views.doacaoDetails && $.addTopLevelView($.__views.doacaoDetails);
+    $.__views.viewDados && $.addTopLevelView($.__views.viewDados);
     $.__views.fotoImageView = Ti.UI.createImageView({
+        height: 150,
+        width: 150,
+        top: 5,
         id: "fotoImageView"
     });
-    $.__views.doacaoDetails.add($.__views.fotoImageView);
+    $.__views.viewDados.add($.__views.fotoImageView);
     $.__views.descricaoLabel = Ti.UI.createLabel({
+        top: 5,
+        textAlign: "center",
         id: "descricaoLabel"
     });
-    $.__views.doacaoDetails.add($.__views.descricaoLabel);
+    $.__views.viewDados.add($.__views.descricaoLabel);
     $.__views.institutoLabel = Ti.UI.createLabel({
+        top: 5,
+        textAlign: "center",
         id: "institutoLabel"
     });
-    $.__views.doacaoDetails.add($.__views.institutoLabel);
+    $.__views.viewDados.add($.__views.institutoLabel);
     $.__views.mapButton = Ti.UI.createButton({
+        title: "Local da Doação",
         id: "mapButton"
     });
-    $.__views.doacaoDetails.add($.__views.mapButton);
-    showMap ? $.addListener($.__views.mapButton, "click", showMap) : __defers["$.__views.mapButton!click!showMap"] = true;
+    $.__views.viewDados.add($.__views.mapButton);
+    showMapDoacao ? $.addListener($.__views.mapButton, "click", showMapDoacao) : __defers["$.__views.mapButton!click!showMapDoacao"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);
     var doacao = $.args;
     $.fotoImageView.image = doacao.get("foto") ? doacao.get("foto") : "/placeholder/caixadoacoes.jpg";
+    $.descricaoLabel.text = doacao.get("descricao");
     Alloy.Collections.institutos.fetch({
         query: {
             statement: "SELECT * FROM institutos WHERE alloy_id = ?",
@@ -61,8 +71,9 @@ function Controller() {
         }
     });
     instituto = Alloy.Collections.institutos.at(0);
-    $.descricaoLabel.value = instituto ? instituto.get("nome") : "Instituto HelpUs";
-    __defers["$.__views.mapButton!click!showMap"] && $.addListener($.__views.mapButton, "click", showMap);
+    $.institutoLabel.text = instituto ? instituto.get("nome") : "Instituto HelpUs";
+    Alloy.Collections.institutos.fetch();
+    __defers["$.__views.mapButton!click!showMapDoacao"] && $.addListener($.__views.mapButton, "click", showMapDoacao);
     _.extend($, exports);
 }
 

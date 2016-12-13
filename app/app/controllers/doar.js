@@ -18,11 +18,10 @@ function add() {
 		if(!Ti.Geolocation.hasLocationPermissions()){
 			Ti.Geolocation.requestLocationPermissions(function(e){
 				if(e.success){
-					if(file == null) {
-						addimg();
-					}
+					alert("Agora já sabemos onde buscar sua doação ,por favor confirme novamente para doar !!");
+					return;
 				}else{
-					alert("É preciso dar permissão !!");
+					alert("Por favor precisamos da sua permissão , para saber onde buscar a doação!!");
 					return;
 				}
 			});
@@ -31,17 +30,28 @@ function add() {
 	
 	Ti.Geolocation.accuracy = Ti.Geolocation.ACCURACY_HIGH; 
 	Ti.Geolocation.getCurrentPosition(function(e){
-		doacao.set('latitude', e.coords.latitude);
-		doacao.set('longitude',e.coords.longitude);
-		if(file != null) {
-			file.write(image);
-		}else{
-			file.write($.imgImageView.image);
+		
+	   Ti.API.info(e.coords);
+	   if (e.error) {
+            alert("Não foi possivel utilizar o GPS , por favor inicie o aplicativo do Google Maps e tente novamente  !!");
+       }else{
+			Ti.API.info(e.coords);
+			doacao.set('latitude', e.coords.latitude);
+			doacao.set('longitude',e.coords.longitude);
+			doacao.set('descricao',$.DescricaoTextField.value);
+			if(file != null) {
+				file.write(image);
+				doacao.set('foto',file.getNativePath());
+			}else{
+				doacao.set('foto',"/placeholder/caixadoacoes.jpg");
+			}
+			doacao.save();
+			alert("Obrigado por Help Us");
+			Alloy.Collections.doacoes.fetch();
+			$.viewDados.close();					
 		}
-		doacao.save();
-		alert("OBRIGADO POR HELP US !!");
-		$.doar.close();	
-	});
+	});	
+	
 }
 
 
@@ -62,5 +72,4 @@ function savePhoto(e){
 	file = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory,
 	doacao.get('alloy_id')+'.jpg');
 	$.imgImageView.image = image;
-	doacao.set('img',file.getNativePath());
 }

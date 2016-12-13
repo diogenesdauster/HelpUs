@@ -1,1 +1,1 @@
-module.exports = [{"isId":true,"priority":100000.0006,"key":"viewDados","style":{layout:"vertical",}},{"isId":true,"priority":100000.0007,"key":"imgImageView","style":{height:200,width:300,top:5,image:"/placeholder/caixadoacoes.jpg",}}];
+module.exports = [{"isId":true,"priority":100000.0009,"key":"viewDados","style":{layout:"vertical",}},{"isId":true,"priority":100000.001,"key":"imgImageView","style":{height:150,width:150,top:5,image:"/placeholder/caixadoacoes.jpg",}}];

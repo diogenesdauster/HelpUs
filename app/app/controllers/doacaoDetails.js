@@ -7,6 +7,8 @@ if(doacao.get('foto')){
 	$.fotoImageView.image = "/placeholder/caixadoacoes.jpg";
 }
 
+$.descricaoLabel.text = doacao.get('descricao');
+
 Alloy.Collections.institutos.fetch({
         query: {
             statement: 'SELECT * FROM institutos WHERE alloy_id = ?',
@@ -15,13 +17,16 @@ Alloy.Collections.institutos.fetch({
     });
 
 instituto = Alloy.Collections.institutos.at(0);
+
 if(instituto){
-	$.descricaoLabel.value = instituto.get('nome');
+	$.institutoLabel.text = instituto.get('nome'); 
 }else{
-	$.descricaoLabel.value = "Instituto HelpUs";
+	$.institutoLabel.text = "Instituto HelpUs";
 }
 
-function showMap(){
+Alloy.Collections.institutos.fetch();
+
+function showMapDoacao(){
 	var ctrl = Alloy.createController('map', doacao);
 	ctrl.getView().open();
 }

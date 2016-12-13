@@ -1,8 +1,8 @@
 <Alloy>
-	<Window>
+	<Window id="viewDados">
 		<ImageView id="fotoImageView" />
 		<Label id="descricaoLabel"/>
 		<Label id="institutoLabel"/>
-		<Button id="mapButton" onClick="showMap" ></Button>
+		<Button id="mapButton" onClick="showMapDoacao" >Local da Doação</Button>
 	</Window>
 </Alloy>

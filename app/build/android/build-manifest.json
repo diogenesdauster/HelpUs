@@ -1,6 +1,6 @@
 {
-	"target": "emulator",
-	"deployType": "development",
+	"target": "device",
+	"deployType": "test",
 	"classname": "Helpus",
 	"platformPath": "/Users/dauster/Library/Application Support/Titanium/mobilesdk/osx/5.5.1.GA/android",
 	"modulesHash": "764f1da7205d115e85fa9e353e6585f4",
@@ -25,8 +25,8 @@
 	"encryptJS": true,
 	"minSDK": 14,
 	"targetSDK": 23,
-	"propertiesHash": "0b08cc1870153b8e76fef0c82b236083",
+	"propertiesHash": "20fd427224df9079636ca6181c6ad2a8",
 	"activitiesHash": "d41d8cd98f00b204e9800998ecf8427e",
 	"servicesHash": "d41d8cd98f00b204e9800998ecf8427e",
-	"jarLibHash": "210d23e75fa849d140dbf948719e8fec"
+	"jarLibHash": "221f4cbac9095a1c9f647e3815343037"
 }

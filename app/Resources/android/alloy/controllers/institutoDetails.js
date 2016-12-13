@@ -35,8 +35,8 @@ function Controller() {
     });
     $.__views.viewDados && $.addTopLevelView($.__views.viewDados);
     $.__views.imgImageView = Ti.UI.createImageView({
-        height: 200,
-        width: 300,
+        height: 150,
+        width: 150,
         top: 5,
         id: "imgImageView"
     });

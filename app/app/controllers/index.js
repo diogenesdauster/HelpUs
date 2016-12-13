@@ -21,12 +21,15 @@ xhr.onload = function(e){
 		 
 };
 
+Alloy.Collections.doacoes.fetch();
 Alloy.Collections.institutos.fetch();
 var institutosModel = Alloy.Collections.institutos.at(0);
 
-//if(institutosModel == false){
+if(institutosModel){
+	
+}else{
 	xhr.open("GET","https://raw.githubusercontent.com/disias/HelpUs/master/Json/instituicoes.json");
 	xhr.send();
-//}
+}
 
 $.index.open();
