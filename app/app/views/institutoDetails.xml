@@ -1,0 +1,10 @@
+<Alloy>
+    <Window>
+        <Label id="NomeLabel"/>
+        <ImageView id="imgImageView" />
+        <Label id="necessidadeLabel"/>
+        <Label id="enderecoLabel"/>
+        <Label id="contatoLabel"/>
+        <Button id="doarButton" onClick="doar"/>        
+    </Window>
+</Alloy>

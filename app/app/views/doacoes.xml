@@ -1,0 +1,16 @@
+<Alloy>
+	<Tab id="doacoesTab">
+		<Window>
+			<TableView id="myTable" dataCollection="doacoes" >
+				<TableViewRow identificador="{alloy_id}" >
+					<View id="view">
+						<ImageView id="foto" image="{foto}" />
+						<View id="viewDados">
+							<Label id="descricao" text="{descricao}"/>
+						</View>
+					</View>
+				</TableViewRow>
+			</TableView>
+		</Window>
+	</Tab>
+</Alloy>

@@ -1,0 +1,8 @@
+<Alloy>
+	<Window>
+		<ImageView id="imgImageView" />
+		<TextField id="DescricaoTextField"/>
+		<Button id="imgButton" onClick="addimg"/>
+		<Button id="addButton" onClick="add"/>
+	</Window>
+</Alloy>

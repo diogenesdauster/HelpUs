@@ -1,0 +1,28 @@
+"#doacoesTab":{
+	title:L('Doacoes')
+}
+
+"#view":{
+	width:Ti.UI.FILL,
+	height:Ti.UI.SIZE,
+	layout:"horizontal"	
+}
+
+"#foto":{
+	height:96,
+	width:72,
+	left:5,
+	top:5,
+	bottom:5
+}
+
+"#viewDados":{
+	width:Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+	layout:"vertical"				
+}
+
+"Label":{
+	top:5,
+	left:5
+}

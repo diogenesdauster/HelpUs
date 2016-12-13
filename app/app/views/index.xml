@@ -1,0 +1,6 @@
+<Alloy>
+	<TabGroup>
+		<Require src="institutos"></Require>
+		<Require src="doacoes"></Require>
+	</TabGroup>
+</Alloy>
