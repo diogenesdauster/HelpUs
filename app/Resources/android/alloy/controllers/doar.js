@@ -11,7 +11,7 @@ function Controller() {
     function add() {
         Ti.Geolocation.hasLocationPermissions() || Ti.Geolocation.requestLocationPermissions(function(e) {
             if (e.success) {
-                capture();
+                addimg();
                 return;
             }
             alert("É preciso dar permissão !!");
@@ -58,27 +58,35 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __defers = {};
-    $.__views.doar = Ti.UI.createWindow({
-        id: "doar"
+    $.__views.viewDados = Ti.UI.createWindow({
+        layout: "vertical",
+        id: "viewDados"
     });
-    $.__views.doar && $.addTopLevelView($.__views.doar);
+    $.__views.viewDados && $.addTopLevelView($.__views.viewDados);
     $.__views.imgImageView = Ti.UI.createImageView({
+        height: 200,
+        width: 300,
+        top: 5,
+        image: "/placeholder/caixadoacoes.jpg",
         id: "imgImageView"
     });
-    $.__views.doar.add($.__views.imgImageView);
+    $.__views.viewDados.add($.__views.imgImageView);
     $.__views.DescricaoTextField = Ti.UI.createTextField({
-        id: "DescricaoTextField"
+        id: "DescricaoTextField",
+        hintText: "Descrição da sua doação"
     });
-    $.__views.doar.add($.__views.DescricaoTextField);
+    $.__views.viewDados.add($.__views.DescricaoTextField);
     $.__views.imgButton = Ti.UI.createButton({
+        title: "Adicionar Imagem",
         id: "imgButton"
     });
-    $.__views.doar.add($.__views.imgButton);
+    $.__views.viewDados.add($.__views.imgButton);
     addimg ? $.addListener($.__views.imgButton, "click", addimg) : __defers["$.__views.imgButton!click!addimg"] = true;
     $.__views.addButton = Ti.UI.createButton({
+        title: "Confirma Doação",
         id: "addButton"
     });
-    $.__views.doar.add($.__views.addButton);
+    $.__views.viewDados.add($.__views.addButton);
     add ? $.addListener($.__views.addButton, "click", add) : __defers["$.__views.addButton!click!add"] = true;
     exports.destroy = function() {};
     _.extend($, $.__views);

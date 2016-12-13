@@ -18,8 +18,9 @@ function add() {
 		if(!Ti.Geolocation.hasLocationPermissions()){
 			Ti.Geolocation.requestLocationPermissions(function(e){
 				if(e.success){
-					capture();
-					return;
+					if(file == null) {
+						addimg();
+					}
 				}else{
 					alert("É preciso dar permissão !!");
 					return;
@@ -34,9 +35,12 @@ function add() {
 		doacao.set('longitude',e.coords.longitude);
 		if(file != null) {
 			file.write(image);
+		}else{
+			file.write($.imgImageView.image);
 		}
 		doacao.save();
-		$.doar.close();		
+		alert("OBRIGADO POR HELP US !!");
+		$.doar.close();	
 	});
 }
 

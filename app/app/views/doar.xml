@@ -1,8 +1,8 @@
 <Alloy>
-	<Window>
+	<Window id="viewDados">
 		<ImageView id="imgImageView" />
-		<TextField id="DescricaoTextField"/>
-		<Button id="imgButton" onClick="addimg"/>
-		<Button id="addButton" onClick="add"/>
+		<TextField id="DescricaoTextField" hintText="Descrição da sua doação"/>
+		<Button id="imgButton" onClick="addimg">Adicionar Imagem</Button>
+		<Button id="addButton" onClick="add">Confirma Doação</Button>
 	</Window>
 </Alloy>

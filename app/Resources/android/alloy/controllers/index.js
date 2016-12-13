@@ -49,10 +49,10 @@ function Controller() {
         alert(e);
     };
     xhr.onload = function() {
-        var institutos = JSON.parse(this.responseText).Search;
+        var institutos = JSON.parse(this.responseText).instituicoes;
         for (var i = 0; i < institutos.length; i++) {
             var instituto = Alloy.createModel("instituto", {
-                name: institutos[i].nome,
+                nome: institutos[i].nome,
                 img: institutos[i].img,
                 necessidade: institutos[i].necessidade,
                 endereco: institutos[i].endereco,
@@ -63,11 +63,9 @@ function Controller() {
         }
     };
     Alloy.Collections.institutos.fetch();
-    var institutosModel = Alloy.Collections.institutos.at(0);
-    if (false == institutosModel) {
-        xhr.open("GET", "https://github.com/disias/HelpUs/blob/master/Json/instituicoes.json");
-        xhr.send();
-    }
+    Alloy.Collections.institutos.at(0);
+    xhr.open("GET", "https://raw.githubusercontent.com/disias/HelpUs/master/Json/instituicoes.json");
+    xhr.send();
     $.index.open();
     _.extend($, exports);
 }

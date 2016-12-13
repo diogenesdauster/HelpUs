@@ -1,10 +1,14 @@
 <Alloy>
-    <Window>
-        <Label id="NomeLabel"/>
+    <Window id="viewDados" >
         <ImageView id="imgImageView" />
+        <Label text="INSTITUTO"/>
+        <Label id="NomeLabel"/>
+        <Label text="NECESSIDADE"/>
         <Label id="necessidadeLabel"/>
+        <Label text="ENDEREÇO"/>
         <Label id="enderecoLabel"/>
+        <Label text="TELEFONE"/>
         <Label id="contatoLabel"/>
-        <Button id="doarButton" onClick="doar"/>        
+        <Button id="doarButton" onClick="doar" >Fazer uma Doação</Button>        
     </Window>
 </Alloy>

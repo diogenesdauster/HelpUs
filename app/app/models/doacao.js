@@ -5,7 +5,7 @@ exports.definition = {
 		    "foto": "string",
 		    "latitude": "real",
 		    "longitude": "real",
-		    "instituto": "int"
+		    "instituto": "integer"
 		},
 		adapter: {
 			type: "sql",

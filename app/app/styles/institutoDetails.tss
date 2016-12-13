@@ -1,0 +1,14 @@
+"#viewDados":{
+	layout:"vertical"				
+}
+
+"#imgImageView":{
+	height:200,
+	width:300,
+	top:5,
+}
+
+"Label":{
+	top:5,
+	textAlign:'center'
+}

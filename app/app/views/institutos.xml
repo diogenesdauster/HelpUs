@@ -1,12 +1,12 @@
 <Alloy>
 	<Tab id="institutosTab">
 		<Window>
-			<TableView id="myTable" dataCollection="institutos" >
-				<TableViewRow identificador="{alloy_id}" >
+			<TableView onClick="showDetails" id="myTable" dataCollection="institutos" >
+				<TableViewRow  identificador="{alloy_id}" >
 					<View id="view">
 						<ImageView id="image" image="{img}" />
 						<View id="viewDados">
-							<Label id="nome" text="{nome}"/>
+							<Label id="name" text="{nome}"/>
 						</View>
 					</View>
 				</TableViewRow>

@@ -77,7 +77,7 @@ function Controller() {
     var __alloyId8 = Alloy.Collections["doacoes"] || doacoes;
     __alloyId8.on("fetch destroy change add remove reset", __alloyId9);
     $.__views.doacoesTab = Ti.UI.createTab({
-        title: L("Doacoes"),
+        title: "Doações",
         window: $.__views.__alloyId0,
         id: "doacoesTab"
     });

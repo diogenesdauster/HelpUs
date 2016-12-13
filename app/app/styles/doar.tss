@@ -1,4 +1,10 @@
+"#viewDados":{
+	layout:"vertical"				
+}
 
-".container" : {
-  
+"#imgImageView":{
+	height:200,
+	width:300,
+	top:5,
+	image:'/placeholder/caixadoacoes.jpg'
 }

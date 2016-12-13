@@ -8,48 +8,53 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
-    function __alloyId22(e) {
+    function __alloyId26(e) {
         if (e && e.fromAdapter) return;
-        __alloyId22.opts || {};
-        var models = __alloyId21.models;
+        __alloyId26.opts || {};
+        var models = __alloyId25.models;
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId14 = models[i];
-            __alloyId14.__transform = _.isFunction(__alloyId14.transform) ? __alloyId14.transform() : __alloyId14.toJSON();
-            var __alloyId16 = Ti.UI.createTableViewRow({
-                identificador: __alloyId14.__transform.alloy_id
+            var __alloyId18 = models[i];
+            __alloyId18.__transform = _.isFunction(__alloyId18.transform) ? __alloyId18.transform() : __alloyId18.toJSON();
+            var __alloyId20 = Ti.UI.createTableViewRow({
+                identificador: __alloyId18.__transform.alloy_id
             });
-            rows.push(__alloyId16);
-            var __alloyId17 = Ti.UI.createView({
+            rows.push(__alloyId20);
+            var __alloyId21 = Ti.UI.createView({
                 width: Ti.UI.FILL,
                 height: Ti.UI.SIZE,
                 layout: "horizontal"
             });
-            __alloyId16.add(__alloyId17);
-            var __alloyId18 = Ti.UI.createImageView({
+            __alloyId20.add(__alloyId21);
+            var __alloyId22 = Ti.UI.createImageView({
                 height: 96,
                 width: 72,
                 left: 5,
                 top: 5,
                 bottom: 5,
-                image: __alloyId14.__transform.img
+                image: __alloyId18.__transform.img
             });
-            __alloyId17.add(__alloyId18);
-            var __alloyId19 = Ti.UI.createView({
+            __alloyId21.add(__alloyId22);
+            var __alloyId23 = Ti.UI.createView({
                 width: Ti.UI.SIZE,
                 height: Ti.UI.SIZE,
                 layout: "vertical"
             });
-            __alloyId17.add(__alloyId19);
-            var __alloyId20 = Ti.UI.createLabel({
+            __alloyId21.add(__alloyId23);
+            var __alloyId24 = Ti.UI.createLabel({
                 top: 5,
                 left: 5,
-                text: __alloyId14.__transform.nome
+                text: __alloyId18.__transform.nome
             });
-            __alloyId19.add(__alloyId20);
+            __alloyId23.add(__alloyId24);
         }
         $.__views.myTable.setData(rows);
+    }
+    function showDetails(e) {
+        var instituto = Alloy.Collections.institutos.get(e.rowData.identificador);
+        var ctrl = Alloy.createController("institutoDetails", instituto);
+        $.institutosTab.open(ctrl.getView());
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "institutos";
@@ -67,26 +72,29 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    $.__views.__alloyId13 = Ti.UI.createWindow({
-        id: "__alloyId13"
+    var __defers = {};
+    $.__views.__alloyId17 = Ti.UI.createWindow({
+        id: "__alloyId17"
     });
     $.__views.myTable = Ti.UI.createTableView({
         id: "myTable"
     });
-    $.__views.__alloyId13.add($.__views.myTable);
-    var __alloyId21 = Alloy.Collections["institutos"] || institutos;
-    __alloyId21.on("fetch destroy change add remove reset", __alloyId22);
+    $.__views.__alloyId17.add($.__views.myTable);
+    var __alloyId25 = Alloy.Collections["institutos"] || institutos;
+    __alloyId25.on("fetch destroy change add remove reset", __alloyId26);
+    showDetails ? $.addListener($.__views.myTable, "click", showDetails) : __defers["$.__views.myTable!click!showDetails"] = true;
     $.__views.institutosTab = Ti.UI.createTab({
-        title: L("Institutos"),
-        window: $.__views.__alloyId13,
+        title: "Institutos",
+        window: $.__views.__alloyId17,
         id: "institutosTab"
     });
     $.__views.institutosTab && $.addTopLevelView($.__views.institutosTab);
     exports.destroy = function() {
-        __alloyId21 && __alloyId21.off("fetch destroy change add remove reset", __alloyId22);
+        __alloyId25 && __alloyId25.off("fetch destroy change add remove reset", __alloyId26);
     };
     _.extend($, $.__views);
     $.args;
+    __defers["$.__views.myTable!click!showDetails"] && $.addListener($.__views.myTable, "click", showDetails);
     _.extend($, exports);
 }
 

@@ -1,1 +1,1 @@
-module.exports = [{"isClass":true,"priority":10000.0006,"key":"container","style":{}}];
+module.exports = [{"isId":true,"priority":100000.0006,"key":"viewDados","style":{layout:"vertical",}},{"isId":true,"priority":100000.0007,"key":"imgImageView","style":{height:200,width:300,top:5,image:"/placeholder/caixadoacoes.jpg",}}];
